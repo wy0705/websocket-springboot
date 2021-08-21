@@ -46,6 +46,7 @@ public class ChatController {
     public void addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 
         LOGGER.info("User added in Chatroom:" + chatMessage.getSender());
+        // TODO: 2021/8/21 添加用户 getSender
         try {
             headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
             redisTemplate.opsForSet().add(onlineUsers, chatMessage.getSender());

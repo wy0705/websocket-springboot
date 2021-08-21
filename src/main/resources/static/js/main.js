@@ -24,7 +24,6 @@ function connect(event) {
         chatPage.classList.remove('hidden');
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
-        console.log("1111111");
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
