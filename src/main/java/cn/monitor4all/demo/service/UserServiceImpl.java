@@ -1,7 +1,9 @@
 package cn.monitor4all.demo.service;
 
+import cn.monitor4all.demo.dao.DataDao;
 import cn.monitor4all.demo.dao.UserDao;
 import cn.monitor4all.demo.entity.User;
+import cn.monitor4all.demo.entity.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private DataDao dataDao;
     @Override
     public int deleteUser(int uid) {
         return userDao.deleteUser(uid);
@@ -37,5 +41,11 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+    @Override
+    public UserData selectdata(int uid) {
+        UserData userData=null;
+        userData=dataDao.selectBydid(uid);
+        return userData;
     }
 }

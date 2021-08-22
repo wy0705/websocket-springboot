@@ -1,5 +1,7 @@
 package cn.monitor4all.springbootwebsocketdemo.controller;
 
+import cn.monitor4all.demo.entity.User;
+import cn.monitor4all.demo.service.UserServiceImpl;
 import cn.monitor4all.springbootwebsocketdemo.model.ChatMessage;
 import cn.monitor4all.springbootwebsocketdemo.service.ChatService;
 import cn.monitor4all.springbootwebsocketdemo.util.JsonUtil;
@@ -12,6 +14,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
 
 @Controller
 public class ChatController {
@@ -30,6 +34,9 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
+    /*@Resource
+    private UserServiceImpl userService;*/
+
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
@@ -47,6 +54,7 @@ public class ChatController {
 
         LOGGER.info("User added in Chatroom:" + chatMessage.getSender());
         // TODO: 2021/8/21 添加用户 getSender
+        //userService.insertUser(new User())
         try {
             headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
             redisTemplate.opsForSet().add(onlineUsers, chatMessage.getSender());
@@ -55,5 +63,7 @@ public class ChatController {
             LOGGER.error(e.getMessage(), e);
         }
     }
+
+
 
 }

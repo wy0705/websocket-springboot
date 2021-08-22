@@ -27,7 +27,7 @@ public class FriendsDao {
 
     public List<Integer> selectFriendByUid(int uid){
         final List<Integer> fflist=new ArrayList<>();
-        String sql= "SELECT mid FROM message WHERE fid=?";
+        String sql= "SELECT _uid FROM friends WHERE uid=?";
         jdbcTemplate.query(sql, new Object[]{uid}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {

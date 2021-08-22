@@ -15,6 +15,11 @@ public class UserData {
         this.age = age;
         this.gender = gender;
     }
+    public UserData(int did, int age, String gender) {
+        this.did = did;
+        this.age = age;
+        this.gender = gender;
+    }
 
     public int getDid() {
         return did;
