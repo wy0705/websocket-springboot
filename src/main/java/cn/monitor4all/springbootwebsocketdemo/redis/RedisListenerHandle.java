@@ -43,12 +43,16 @@ public class RedisListenerHandle extends MessageListenerAdapter {
      */
     @Override
     public void onMessage(Message message, byte[] bytes) {
+        // 获取消息
         byte[] body = message.getBody();
+        // 获取 channel
         byte[] channel = message.getChannel();
         String rawMsg;
         String topic;
         try {
+            // 使用值序列化器转换
             rawMsg = redisTemplate.getStringSerializer().deserialize(body);
+            // 使用字符串序列化器转换
             topic = redisTemplate.getStringSerializer().deserialize(channel);
             LOGGER.info("Received raw message from topic:" + topic + ", raw message content：" + rawMsg);
         } catch (Exception e) {
