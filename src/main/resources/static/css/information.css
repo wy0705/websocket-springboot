@@ -1,0 +1,136 @@
+html{
+    font-size: 100px;
+}
+div{
+    box-sizing: border-box;
+}
+body,input,i{
+    padding:0;
+    margin:0;
+    text-decoration: none;
+    outline: none;
+    font-size: x-small;
+}
+body{
+    background: rgb(240,240,240);
+}
+.header>.top{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 10;
+    height: 0.55rem;
+    /* background: #26A69A; */
+    background: linear-gradient(to right, #67e734, #78dcd4);
+    font-size: 0.14rem;
+    color:white;
+    width: 100%;
+    text-align: center;
+    padding-left: 0.17rem;
+    padding-right: 0.17rem;
+    line-height: 0.44rem;
+}
+
+.header>.top img{
+    margin: 6px 6px;
+    float: left;
+    height: 40px;
+    width: 40px;
+    /* border: 1px solid orangered; */
+    border-radius: 50%;
+}
+.header:after{
+    /* content: ; */
+    display: block;
+    clear: both;
+}
+.top>.address{
+    float: left;
+}
+
+a {
+    text-decoration: none;
+}
+/* 中间 */
+
+
+
+
+
+.online_friend ul {
+    /* 去哪个小点的 */
+    list-style-type: none;
+    position: absolute;
+    margin-top:45px;
+    left:-40px;
+    top: 40px;
+}
+li{
+    list-style-type: none;
+    width:500px;
+}
+.sdz {
+    margin-top: 10px;
+}
+
+.online_friend ul li>.xm {
+    /* margin-top: 0px; */
+    height: 63px;
+    border-bottom: 5px solid #1c1f21;
+    margin-top: 15px;
+}
+
+.a_friend {
+    /* border: 1px solid #2328ff; */
+    height: 80px;
+    background-color: #eff5f5;
+
+}
+
+/* 这个可以将图片编程修饰圆角 */
+.head_portrait {
+    margin: 6px 6px;
+    float: left;
+    height: 40px;
+    width: 40px;
+    /* border: 1px solid orangered; */
+    border-radius: 50%;
+}
+
+
+/* 底部 */
+.footer{
+    position: absolute;
+    width: 100%;
+    left:0;
+    bottom: 0;
+    z-index: 5;
+    height: 60px;
+    background: linear-gradient(to right, #67e734, #78dcd4);
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    line-height: 0.24rem;
+}
+/* 移动过去显示的白色那个宽度 */
+.footer>.option{
+    width: 25%;
+    text-align: center;
+}
+
+.footer{
+    position: absolute;
+    color: white;
+}
+
+.footer .list{
+    margin-top: 13px;
+    font-size: 0.15rem;
+}
+.footer>.option:hover{
+    background: white;
+    color:  #26A69A;
+}
+#PPt_Btn{
+   padding-right: initial;
+}

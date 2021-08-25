@@ -11,6 +11,7 @@ var connectingElement = document.querySelector('.connecting');
 var finendPage = document.querySelector('#finend_page');
 var FinedFrom = document.querySelector('#finend_Form');
 
+
 var stompClient = null;
 var username = null;
 
@@ -23,15 +24,12 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
-        console.log("222222")
-        usernamePage.classList.add('hidden')
-        console.log("1111111")
-        finendPage.classList.remove('hidden')
-        //chatPage.classList.remove('hidden');
-
-        var socket = new SockJS('/ws');
+        usernamePage.classList.add('hidden');
+        // chatPage.classList.remove('hidden')
+        finendPage.classList.remove('hidden');
+        var socket = new SockJS('http://localhost:63342/ws');
         stompClient = Stomp.over(socket);
-
+        console.log("1111111");
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
@@ -126,18 +124,23 @@ function getAvatarColor(messageSender) {
 function MessageFrom(){
     finendPage.classList.add('hidden')
     chatPage.classList.remove('hidden');
-
+//     var socket = new SockJS('http://localhost:63342/ws');
+//     stompClient = Stomp.over(socket);
+//     console.log("1111111");
+//     stompClient.connect({}, onConnected, onError);
+// event.preventDefault();
 }
+
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
-FinedFrom.addEventListener('submit',MessageFrom,true)
-
+FinedFrom.addEventListener('submit',MessageFrom,true);
 
 autoSize();
 window.onresize = function(){
     autoSize();
 }
+
 function autoSize(){
 
 // 获取当前浏览器的视窗宽度，放在w中
@@ -157,3 +160,4 @@ function autoSize(){
     html.style.fontSize = size + 'px';
 
 }
+
