@@ -88,7 +88,7 @@ button {
     line-height: 80%;
     white-space: nowrap;
     vertical-align: middle;
-    padding: 0.6rem 1px;
+    padding: 0.6rem 1rem;
     border-radius: 2px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
