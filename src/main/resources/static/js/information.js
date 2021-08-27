@@ -8,9 +8,9 @@ function Fun1() {
     li.className = 'sdz';
     ul.appendChild(li);
 
-    var a = document.createElement("button");
+    /*var a = document.createElement("button");
     a.type="submit";
-    li.appendChild(a);
+    li.appendChild(a);*/
 
     var lia = document.createElement("div")
     lia.className = 'a_friend';

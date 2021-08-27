@@ -124,6 +124,7 @@ function getAvatarColor(messageSender) {
 }
 
 function MessageFrom(){
+    console.log("3333333")
     finendPage.classList.add('hidden')
     chatPage.classList.remove('hidden');
 
