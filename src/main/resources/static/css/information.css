@@ -82,10 +82,17 @@ li{
 
 .a_friend {
     /* border: 1px solid #2328ff; */
-    height: 80px;
+    height: 60px;
+    width: 48px;
     background-color: #eff5f5;
 
 }
+
+.a_Btn {
+    height: 80px;
+    width: 475px;
+}
+
 
 /* 这个可以将图片编程修饰圆角 */
 .head_portrait {
@@ -131,8 +138,6 @@ li{
     background: white;
     color:  #26A69A;
 }
-/*
 #PPt_Btn{
    padding-right: initial;
 }
-*/

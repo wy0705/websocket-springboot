@@ -10,27 +10,18 @@ html,body {
 }
 
 body {
-   /* margin: 0;
+    margin: 0;
     padding: 0;
     font-weight: 400;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 20px;
     line-height: 1.58;
     color: #333;
     background-color: #f4f4f4;
-    height: 100%;*/
-    /*弹性布局 让页面元素垂直+水平居中*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*让页面始终占浏览器可视区域总高度*/
-    height: 100vh;
-    /*背景渐变色*/
-    background: linear-gradient(#141e30,#243b55);
-
+    height: 100%;
 }
 
-/*body:before {
+body:before {
     height: 50%;
     width: 100%;
     position: absolute;
@@ -39,7 +30,7 @@ body {
     background: #128ff2;
     content: "";
     z-index: 0;
-}*/
+}
 
 .clearfix:after {
     display: block;
@@ -58,7 +49,7 @@ body {
     border: 1px solid #c8c8c8;
 }
 
-.form-group {
+.form-group{
     margin-bottom: 15px;
 }
 
@@ -73,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.7em;
+    font-size: 20px;
 }
 
 a {
@@ -83,16 +74,16 @@ a {
 button {
     box-shadow: none;
     border: 1px solid transparent;
-    font-size: 14px;
+    font-size: x-small;
     outline: none;
-    line-height: 80%;
+    line-height: 100%;
     white-space: nowrap;
     vertical-align: middle;
-    padding: 0.6rem 1rem;
+    padding: 20px 30px;
     border-radius: 2px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    min-height: 38px;
+    min-height: 3px;
 }
 
 button.default {
@@ -137,18 +128,62 @@ button.accent {
     margin-top: -160px;
 }
 
+.username-page-containe {
+    background: #fff;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    margin-top: 42px;
+    vertical-align: middle;
+    position: relative;
+    padding: 35px 55px 35px;
+    min-height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: -160px;
+}
+
+
 .username-page-container .username-submit {
     margin-top: 10px;
 }
 
 
-#chat-page {
+#chat-page{
     position: relative;
     height: 100%;
 }
+#finend_page{
+    position:relative;
+    height:60%
+}
+.finend-container{
+    background: #fff;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    margin-top: 42px;
+    vertical-align: middle;
+    position: absolute;
+    padding: 35px 55px 35px;
+    min-height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: -160px;
+}
 
 .chat-container {
-    max-width: 700px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
@@ -169,16 +204,18 @@ button.accent {
     height: calc(100% - 150px);
 }
 
-#chat-page #messageForm {
+#chat-page #messageForm{
+    position: absolute;
     padding: 20px;
 }
 
 #chat-page ul li {
-    line-height: 1.5px;
+    line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid #f4f4f4;
 }
+
 
 #chat-page ul li p {
     margin: 0;
@@ -239,13 +276,13 @@ button.accent {
     margin-left: 5px;
 }
 
-.chat-header {
+.chat-header{
     text-align: center;
     padding: 15px;
     border-bottom: 1px solid #ececec;
 }
 
-.chat-header h2 {
+.chat-header h2{
     margin: 0;
     font-weight: 500;
 }
@@ -262,7 +299,7 @@ button.accent {
 
 @media screen and (max-width: 730px) {
 
-    .chat-container {
+    .chat-container{
         margin-left: 10px;
         margin-right: 10px;
         margin-top: 10px;
@@ -293,7 +330,7 @@ button.accent {
         width: calc(100% - 70px);
     }
 
-    .chat-header {
+    .chat-header{
         padding: 10px;
     }
 
@@ -302,6 +339,6 @@ button.accent {
     }
 
     .chat-header h2 {
-        font-size: 1.1em;
+        font-size: 20px;
     }
 }

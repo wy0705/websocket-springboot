@@ -8,6 +8,10 @@ var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
 
+var finendPage = document.querySelector('#finend_page');
+var FinedFrom = document.querySelector('#finend_Form');
+
+
 var stompClient = null;
 var username = null;
 
@@ -20,36 +24,26 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
-        usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
-
-        var socket = new SockJS('/ws');
+         usernamePage.classList.add('hidden');
+        // chatPage.classList.remove('hidden')
+        finendPage.classList.remove('hidden');
+        var socket = new SockJS('http://localhost:63342/ws');
         stompClient = Stomp.over(socket);
-
-        stompClient.connect({
-            userid:username
-
-        }, onConnected, onError);
+        console.log("1111111");
+        stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
 }
 
 
 function onConnected() {
-
-
-
-
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
-
-    //额外订阅了mike频道,暂时当做自己的频道,别人需要特意往这个频道发送消息,才能完成 ‘单对单’
-    stompClient.subscribe('/user/topic/msg', onMessageReceived);
 
     // Tell your username to the server
     stompClient.send("/app/chat.addUser",
         {},
-        JSON.stringify({sender: username, type: 'JOIN',to:'all'})
+        JSON.stringify({sender: username, type: 'JOIN'})
     )
 
     connectingElement.classList.add('hidden');
@@ -69,13 +63,10 @@ function sendMessage(event) {
         var chatMessage = {
             sender: username,
             content: messageInput.value,
-            type: 'CHAT',
-            to:'all'
-
+            type: 'CHAT'
         };
-        console.log("----- ："+ messageInput.value);
 
-        stompClient.send("/app/chat.sendMessageTest", {}, JSON.stringify(chatMessage));
+        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
@@ -89,10 +80,10 @@ function onMessageReceived(payload) {
 
     if(message.type === 'JOIN') {
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' 上线~!';
+        message.content = message.sender + ' joined!';
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' 离线了!';
+        message.content = message.sender + ' left!';
     } else {
         messageElement.classList.add('chat-message');
 
@@ -110,7 +101,7 @@ function onMessageReceived(payload) {
     }
 
     var textElement = document.createElement('p');
-    var messageText = document.createTextNode('消息：'+message.content);
+    var messageText = document.createTextNode(message.content);
     textElement.appendChild(messageText);
 
     messageElement.appendChild(textElement);
@@ -130,5 +121,43 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
+function MessageFrom(){
+    finendPage.classList.add('hidden')
+    chatPage.classList.remove('hidden');
+    var socket = new SockJS('http://localhost:63342/ws');
+    stompClient = Stomp.over(socket);
+    console.log("1111111");
+    stompClient.connect({}, onConnected, onError);
+event.preventDefault();
+}
+
+
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
+FinedFrom.addEventListener('submit',MessageFrom,true);
+
+autoSize();
+window.onresize = function(){
+    autoSize();
+}
+
+function autoSize(){
+
+// 获取当前浏览器的视窗宽度，放在w中
+
+    var w = document.documentElement.clientWidth;
+
+// 计算实际html font-size大小
+
+    var size = w * 100 / 375 ;
+
+// 获取当前页面中的html标签
+
+    var html = document.querySelector('html');
+
+// 设置字体大小样式
+
+    html.style.fontSize = size + 'px';
+
+}
+
